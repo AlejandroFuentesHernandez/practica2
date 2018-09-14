@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ventas extends CI_Controller{
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('venta_model','venta',TRUE)
+	}
+
 
 	public function error()
 	{
@@ -44,6 +50,18 @@ class Ventas extends CI_Controller{
 
 	public function cargarproducto()
 	{
+		$this->load->model('');
+		$resultado=$this->DM->$llenarproducto();
+		foreach ($resultado as $item) {
+			echo '<option value="'.$item['id_producto'].'">'.$item['producto'].'</option>';
+		}
+
+
+	}
+
+	public function ingresardatos()
+	{
+
 
 	}
 }
