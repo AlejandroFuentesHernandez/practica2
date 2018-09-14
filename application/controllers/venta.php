@@ -43,18 +43,18 @@ class Venta extends CI_Controller{
 			echo '<option value="'.$item['id_producto'].'">'.$item['producto'].'</option>';
 		}
 
-	public function ()
-	{
-		
-	}
+	
+	
 
 	}
 
 	public function ingresarventas()// metodo ingresar datos en la base de datos
 	{
 		
-		$id_cliente=>$this->input->post('$item["cliente"]');//ingresar los datos capturados por los input de el frmVenta
+		$id_cliente=>$this->input->post('nombre_cliente');//ingresar los datos capturados por los input de el frmVenta
 		$fecha_venta=>$this->input->post('fecha_venta');
+					=>$this->input->post('nombre_producto');
+					=>$this->input->post('precio_unitario_producto');
 		$total_productos_venta=>$this->input->post('cantidad');
 		$total_venta=>$this->input->post('total');
 
