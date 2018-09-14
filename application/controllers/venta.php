@@ -11,7 +11,7 @@ class Venta extends CI_Controller{
 
 	public function index()
 	{
-		$this->load->helper('url');
+	
 		$this->load->view('frmVenta');
 	}
 
@@ -43,8 +43,22 @@ class Venta extends CI_Controller{
 			echo '<option value="'.$item['id_producto'].'">'.$item['producto'].'</option>';
 		}
 
+	/*
+	public function conseguirexistencia()
+	{
 	
-	
+		$result=$this->VM->getExistencias();
+		$result2=$this->VM->getPrecio;
+
+		$id_venta=$result;
+		$id_producto=$result2;
+
+	}
+
+
+
+	*/
+
 
 	}
 
