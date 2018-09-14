@@ -13,6 +13,7 @@ class Venta_model extends CI_Model
         $id_venta=$this->db->insert_id();//Funciona para recuperar el ultimo id autoincrement ingresado//
 
          $this->db->query("INSERT INTO tab_venta_producto(id_venta, id_producto) VALUES("$id_venta", "$id_producto")");
+
          if($this->db->trans_status()===false;
          {
             $this->db->trans_rollback();
