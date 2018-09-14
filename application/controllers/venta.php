@@ -6,14 +6,7 @@ class Venta extends CI_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('venta_model','venta',TRUE);
-	}
-
-
-	public function error()
-	{
-		$this->load->helper('url');
-		$this->load->view('error');
+		$this->load->model('venta_model','VM',TRUE);
 	}
 
 	public function index()
@@ -36,7 +29,6 @@ class Venta extends CI_Controller{
 	}*/
 	public function cargarcliente()
 	{
-		$this->load->model('Venta_model','VM',TRUE);
 		$resultado=$this->VM->getCliente();
 		foreach ($resultado as $item) {
 			echo '<option value="'.$item['id_cliente'].'">'.$item['cliente'].'</option>';
@@ -66,6 +58,10 @@ class Venta extends CI_Controller{
 		$total_productos_venta=>$this->input->post('cantidad');
 		$total_venta=>$this->input->post('total');
 
+		
+
+
+
 
 		$id_venta=>$this->input->post();
 		$id_producto=>$this->input->post();
@@ -77,5 +73,6 @@ class Venta extends CI_Controller{
 
 		
 	}
+	
 }
 ?>
