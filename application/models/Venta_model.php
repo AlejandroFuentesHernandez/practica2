@@ -1,7 +1,7 @@
 <?php
-//Creamos la Insercion de datos de una tabla
+//Inicia la clase Venta_model//
 class Venta_model extends CI_Model
-{ //Inicio de consulta
+{ 
 
           //Se manda a llamar al cliente//
         public function getCliente()
@@ -11,14 +11,23 @@ class Venta_model extends CI_Model
             return $resultado->result_array();
         }//Fin de llamado de cliente//
 
-            //Se manda a llamar al cliente//
+            //Se manda a llamar al producto//
             public function getProducto()
         {
             $this->load->database();
             $result=$this->db->get('tab_producto');
             return $result->result_array();
         }//Fin de llamado de producto//
+
+         public function getExistencias($id)
+        {
+            $this->load->database();
+            $this->db->where('id_producto',$id)
+            $result=$this->db->get('tab_producto');
+            return $result->row()->existencias_producto;
+        }
          
+
 
          //Insercion de datos//
         public function nuevoVenta()
@@ -45,4 +54,4 @@ class Venta_model extends CI_Model
         }
 
     
-}//Fin de Insercion de datos
+}//Fin de clase Venta_model//
