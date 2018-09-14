@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ventas extends CI_Controller{
+class Venta extends CI_Controller{
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('venta_model','venta',TRUE)
+		$this->load->model('venta_model','venta',TRUE);
 	}
 
 
@@ -29,20 +29,15 @@ class Ventas extends CI_Controller{
 		}
 
 
-			Input 1--- nombre_cliente
-2.       Input 2--- fecha_venta
-3.       Input 3--- nombre_producto
-4.       Input 4--- precio_unitario_producto
-5.       Input 5--- cantidad
-6.       Input 6--- total
+			
 
 
 
 	}*/
 	public function cargarcliente()
 	{
-		$this->load->model('');
-		$resultado=$this->DM->llenarcliente();
+		$this->load->model('Venta_model','VM',TRUE);
+		$resultado=$this->VM->getCliente();
 		foreach ($resultado as $item) {
 			echo '<option value="'.$item['id_cliente'].'">'.$item['cliente'].'</option>';
 		}
@@ -50,19 +45,37 @@ class Ventas extends CI_Controller{
 
 	public function cargarproducto()
 	{
-		$this->load->model('');
-		$resultado=$this->DM->$llenarproducto();
+		$this->load->model('Venta_model','VM',TRUE);
+		$resultado=$this->VM->getProducto();
 		foreach ($resultado as $item) {
 			echo '<option value="'.$item['id_producto'].'">'.$item['producto'].'</option>';
 		}
 
+	public function ()
+	{
+		
+	}
 
 	}
 
-	public function ingresardatos()
+	public function ingresarventas()// metodo ingresar datos en la base de datos
 	{
+		
+		$id_cliente=>$this->input->post('$item["cliente"]');//ingresar los datos capturados por los input de el frmVenta
+		$fecha_venta=>$this->input->post('fecha_venta');
+		$total_productos_venta=>$this->input->post('cantidad');
+		$total_venta=>$this->input->post('total');
 
 
+		$id_venta=>$this->input->post();
+		$id_producto=>$this->input->post();
+
+
+
+
+		
+
+		
 	}
 }
 ?>
