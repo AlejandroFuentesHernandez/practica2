@@ -26,16 +26,23 @@ class Venta_model extends CI_Model
             $result=$this->db->get('tab_producto');
             return $result->row()->existencias_producto;
         }
-         
+
+         public function getPrecio($id)
+        {
+            $this->load->database();
+            $this->db->where('id_producto',$id)
+            $result=$this->db->get('tab_producto');
+            return $result->row()->precio_unitario_producto;
+        }         
 
 
          //Insercion de datos//
-        public function nuevoVenta()
+        public function nuevoVenta($id_cliente,$fecha_venta,$total_productos_venta,$total_venta)
         {
             $this->load->database();
             $this->db->trans_begin();//Inicio de transacción//
             
-            $this->db->query("INSERT INTO tab_venta(id_cliente,fecha_venta, total_productos_venta,total_venta) VALUES("$id_cliente", "$fecha_venta", "$total_productos_venta", "$total_venta")");
+            $this->db->query("INSERT INTO tab_venta(id_cliente,fecha_venta, total_productos_venta,total_venta) VALUES(".$id_cliente.", '".$fecha_venta."', "$total_productos_venta", "$total_venta")");
 
             $id_venta=$this->db->insert_id();//Funciona para recuperar el ultimo id autoincrement ingresado//
 
