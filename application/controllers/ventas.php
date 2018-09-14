@@ -5,8 +5,14 @@ class Ventas extends CI_Controller{
 
 	public function index()
 	{
-		
-		$this->load->view('frmVenta');
+		$this->load->helper('url');
+		$this->load->view('frmVentas');
+	}
+
+	public function error()
+	{
+		$this->load->helper('url');
+		$this->load->view('error');
 	}
 }
 ?>
