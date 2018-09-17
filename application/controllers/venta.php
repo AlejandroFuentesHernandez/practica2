@@ -6,90 +6,80 @@ class Venta extends CI_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('venta_model','VM',TRUE);
+		$this->load->model('Venta_model','VM',TRUE);
 	}
 
 	public function index()
 	{
-		
 		$this->load->view('frmVenta');
 	}
 
-	/*public function realizar()
-	{
-		foreach($cliente as $item){
-			echo '<option value="item[id_cliente]".$item["nombre_cliente"].</option>';
-		}
-
-
-			
-
-
-
-	}*/
 	public function cargarcliente()
 	{
 		$resultado=$this->VM->getCliente();
 		foreach ($resultado as $item) {
-			echo '<option value="'.$item['id_cliente'].'">'.$item['cliente'].'</option>';
+			echo '<option value="'.$item['id_cliente'].'">'.$item['nombre_cliente'].'</option>';
 		}
 	}
 
 	public function cargarproducto()
 	{
-		$this->load->model('Venta_model','VM',TRUE);
 		$resultado=$this->VM->getProducto();
 		foreach ($resultado as $item) {
-			echo '<option value="'.$item['id_producto'].'">'.$item['producto'].'</option>';
+			echo '<option value="'.$item['id_producto'].'">'.$item['nombre_producto'].'</option>';
 		}
-
-	/*
-	public function conseguirexistencia()
-	{
+	}
 	
-		$result=$this->VM->getExistencias();
-		$result2=$this->VM->getPrecio();
-
-		$id_venta=$result;
-		$id_producto=$result2;
-
-	}
-
-
-
-	*/
-
-
-	}
-
-	public function ingresarventas()// metodo ingresar datos en la base de datos
+	/*public function conseguirexistencia()
 	{
-		//consegir existencias
-		$result=$this->VM->getExistencias();
-		$result2=$this->VM->getPrecio();
+		$id_producto=$this->input->get('idp');
+		$cantidad=$this->input->get('cant');
+		$result=$this->VM->getExistencias($id_producto);
+		if($result<$cantidad)
+		{
+		echo "$cantidad";
+			return 0;
+		}else
+		{
+			return 1; 
+		}
+	}*/
 
+	public function precio()
+	{
+		$id_producto=$this->input->post('id');
+		$resultado=$this->DM->getPrecio($id_producto);
+		echo json_encode($resultado);
+		//echo "$resultado";
+	}
+
+
+
+/*	public function ingresarventas()// metodo ingresar datos en la base de datos
+	{
+		
 		$id_cliente=>$this->input->post('nombre_cliente');//ingresar los datos capturados por los input de el frmVenta
 		$fecha_venta=>$this->input->post('fecha_venta');
-					//=>$this->input->post('nombre_producto');
-					//=>$this->input->post('precio_unitario_producto');
-		$id_venta=$result;
-		$id_producto=$result2;
+					=>$this->input->post('nombre_producto');
+					=>$this->input->post('precio_unitario_producto');
 		$total_productos_venta=>$this->input->post('cantidad');
 		$total_venta=>$this->input->post('total');
 
-		$resultado=$this->VM->nuevoVenta();
+		
+
+
+
+
+		$id_venta=>$this->input->post();
+		$id_producto=>$this->input->post();
 
 
 
 
 		
 
-
-
 		
-
-		
-	}
+	}*/
 	
 }
 ?>
