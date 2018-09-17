@@ -101,6 +101,7 @@ $(document).ready(function()
   operacion();
   //existencias();
   precio();
+  guardar();
 
 })
 
@@ -195,6 +196,14 @@ function llenarProducto()
        
      }
 
+
+  function guardar(){
+    $.ajax({
+      type:"POST",
+      url:'<?php echo site_url(); ?> Venta/ingresarventas', 
+      data: $('')
+    });
+  }
 
 
 
