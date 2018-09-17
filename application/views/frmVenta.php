@@ -34,7 +34,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="form_venta" action="<?php //echo site_url(); ?>Venta/FALTAAAA!!!" method="POST"> 
+        <form id="form_venta" action="<?php //echo site_url(); ?>Venta/ingresarventas" method="POST"> 
           <!-- Primer campo-->
           <div class="col-md-12 form-group input-group">
             <label for="" class="input-group-addon"> Seleccionar Cliente:</label>
@@ -42,7 +42,7 @@
             </select>
                       
           </div>  
-           <!-- Segundo campo  <input class="form-control" size="16" type="text"  id="fecha_venta" name="fecha_venta" readonly>-->        
+           <!-- Segundo campo-->        
           <div class="col-md-12 form-group input-group">
             <label for="" class="input-group-addon"> Fecha de Venta:</label>
             <input class="form-control" size="16" type="text"  id="fecha_venta" name="fecha_venta" readonly>
@@ -50,8 +50,8 @@
           </div>                              
           <!-- Tercero campo-->
           <div class="col-md-12 form-group input-group">
-            <label for="" class="js-example-basic-single input-group-addon"> Seleccionar un Producto:</label>
-            <select class="form-control" id='nombre_producto' name="nombre_producto">
+            <label for="" class="input-group-addon"> Seleccionar un Producto:</label>
+            <select class="js-example-basic-single form-control" id='nombre_producto' name="nombre_producto" onchange="precio()">
             </select>
           </div>
           <!-- Cuarto campo-->
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-12 text-center">
           <!-- limpiar-->
-            <a href="<?php //echo site_url();?>Venta" class="btn btn-primary">Limpiar</a>
+            <a href="<?php echo site_url();?>Venta" class="btn btn-primary">Limpiar</a>
           <!-- Boton Guardar-->
             <button type="submit" class="btn btn-success">Guardar</button>
           </div>
@@ -93,14 +93,14 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
-  //llenarCliente();
-  //llenarProducto();
+  llenarCliente();
+  llenarProducto();
   modal();
   select();
-  $("#fecha_venta").datepicker({
-    format: 'yyyy-mm-dd'
-  });
+  calendario();
   operacion();
+  //existencias();
+  precio();
 
 })
 
@@ -118,8 +118,8 @@ function select(){
 
 function calendario() 
 {
-  $("#fecha_venta").datepicker({
-    format: 'yyyy-mm-dd'
+  $("#fecha_venta").datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
   });
 }
 
@@ -133,12 +133,12 @@ function calendario()
 
 function llenarCliente()
 {
-  $.ajax
-  ({
+  $.ajax({
     type:"POST",
-    url:'<?php //echo site_url(); ?> Venta/cargarcliente',
+    url:'<?php echo site_url();?>Venta/cargarcliente',
     success: function(data)
     {
+      $('#nombre_cliente').html('');
       $('#nombre_cliente').html(data);
     }
 
@@ -147,33 +147,59 @@ function llenarCliente()
 
 function llenarProducto()
 {
-  $.ajax
-  ({
+  $.ajax ({
     type:"POST",
-    url:'<?php //echo site_url(); ?> Venta/cargarproducto',
+    url:'<?php echo site_url();?>Venta/cargarproducto',
     success: function(data)
     {
+      $('#nombre_producto').html('');
       $('#nombre_producto').html(data);
     }
 
   });
 }
 
-function existencias(){
+/*function existencias(){
+  var idp=$(#'nombre_producto').val();
+  var cant=$(#'cantidad').val();
   $.ajax ({
     type:"GET",
-    url:'<?php //echo site_url(); ?> Venta/existencias',
-    data: 
+    url:'<?php //echo site_url(); ?> Venta/conseguirexistencia',
+    data: 'idp='+idp & 'cant='+cant,
     success: function(data){
-      $('#cantidad').val()
-      alert('se puede comprar')
+      if(data==1){
+        $('#cantidad').val()
+        swal ("Cantidad inexistente")
+      }
+      if(data==2){
+        swal("no se q poner xD")
+      }
+      
     }
   });
-}
+}*/
+
+  function precio(){
+     var id=$('#nombre_producto').val();
+      $.ajax({                        
+        type: "POST",                 
+        url:'<?php echo site_url(); ?> Venta/precio',
+        data:'id='+id,
+         //dataType:'json',
+        success: function(data)             
+          {
+            $('#precio_unitario_producto').html(data);
+                        
+          }
+      });                
+       
+     }
+
+
 
 
 
 </script>
 
-<!--Calendario <input size="16" type="text" class="form-control" id="datetime" readonly>-->
+
 
