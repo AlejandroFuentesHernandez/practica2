@@ -17,6 +17,7 @@
 <!--select2-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<!--sweetalert.-->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
@@ -35,7 +36,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="form_venta" action="<?php //echo site_url(); ?>Venta/ingresarventas" method="POST"> 
+        <form id="form_venta" action="" method="POST"> 
           <!-- Primer campo-->
           <div class="col-md-12 form-group input-group">
             <label for="" class="input-group-addon"> Seleccionar Cliente:</label>
@@ -74,7 +75,7 @@
           <!-- limpiar-->
             <a href="<?php echo site_url();?>Venta" class="btn btn-primary">Limpiar</a>
           <!-- Boton Guardar-->
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" onclick="guardar()" class="btn btn-success">Guardar</button>
           </div>
         </form>                 
       </div> <!--cierra body del modal-->
@@ -186,7 +187,7 @@ function llenarProducto()
     $.ajax({
       type:"POST",
       url:'<?php echo site_url();?>Venta/ingresarventas', 
-      data: $('form_venta').serialize(),
+      data: $('#form_venta').serialize(),
       success: function(data)
       {
         if(data==1){

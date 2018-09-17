@@ -19,13 +19,13 @@ class Venta_model extends CI_Model
             return $result->result_array();
         }//Fin de llamado de producto//
 
-       /* public function getExistencias($id)
+       public function getExistencias($id)
         {
             $this->load->database();
             $this->db->where('id_producto',$id);
             $result=$this->db->get('tab_producto');
             return $result->row()->existencias_producto;
-        } */
+        } 
 
         public function getPrecio($id)
         {
@@ -37,7 +37,7 @@ class Venta_model extends CI_Model
 
 
          //Insercion de datos//
-        public function nuevoVenta($id_cliente,$fecha_venta,$total_productos_venta,$total_venta)
+        public function nuevoVenta($id_cliente,$fecha_venta,$id_producto, $total_productos_venta,$total_venta)
         {
             $this->load->database();
             $this->db->trans_begin();//Inicio de transacción//
@@ -45,16 +45,18 @@ class Venta_model extends CI_Model
             $this->db->query("INSERT INTO tab_venta(id_cliente,fecha_venta, total_productos_venta,total_venta) VALUES(".$id_cliente.", '".$fecha_venta."', ".$total_productos_venta.", ".$total_venta.")");
 
             $id_venta=$this->db->insert_id();//Funciona para recuperar el ultimo id autoincrement ingresado//
+            for ($i=0; $i <$total_productos_venta; $i++) { 
+               $this->db->query("INSERT INTO tab_venta_producto(id_venta, id_producto) VALUES(".$id_venta.", ".$id_producto.")");
+            }
+             $this->db->query("UPDATE tab_producto SET existencias_producto=(existencias_producto-".$total_productos_venta.") WHERE id_producto=".$id_producto);
 
-             $this->db->query("INSERT INTO tab_venta_producto(id_venta, id_producto) VALUES(".$id_venta.", ".$id_producto.")");
-
-             if($this->db->trans_status()===false;
+             if($this->db->trans_status()===false)
              {
-                $this->db->trans_rollback();
+                $this->db->trans_rollback();//no se guarda nada en la base, todo lo que se mando se borra
                 return 0;
              }else
              {
-                $this->db->trans_commit();
+                $this->db->trans_commit(); //Guarda datos en la base
                 return 1;
              }   //Fin de Insercion de datos//
 

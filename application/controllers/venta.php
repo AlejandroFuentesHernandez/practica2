@@ -37,7 +37,7 @@ class Venta extends CI_Controller{
 		$result=$this->VM->getExistencias($id_producto);
 		if($result<$cantidad)
 		{
-		echo "$cantidad";
+		
 			echo 0;
 		}else
 		{
@@ -65,7 +65,13 @@ class Venta extends CI_Controller{
 		$total_venta=$this->input->post('total');
 		
 
-		echo $this->VM->nuevoVenta($id_cliente,$fecha_venta,$total_productos_venta,$total_venta,$id_producto);
+		$resultado=$this->VM->nuevoVenta($id_cliente,$fecha_venta, $id_producto, $total_productos_venta, $total_venta);
+		if($resultado==1){
+			echo 1;
+		}else
+		{
+			echo 0;
+		}
 
 
 		
