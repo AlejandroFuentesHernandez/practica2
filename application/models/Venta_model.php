@@ -19,13 +19,13 @@ class Venta_model extends CI_Model
             return $result->result_array();
         }//Fin de llamado de producto//
 
-        public function getExistencias($id)
+       /* public function getExistencias($id)
         {
             $this->load->database();
             $this->db->where('id_producto',$id);
             $result=$this->db->get('tab_producto');
             return $result->row()->existencias_producto;
-        }
+        } */
 
         public function getPrecio($id)
         {
@@ -37,16 +37,16 @@ class Venta_model extends CI_Model
 
 
          //Insercion de datos//
-       /* public function nuevoVenta($id_cliente,$fecha_venta,$total_productos_venta,$total_venta)
+        public function nuevoVenta($id_cliente,$fecha_venta,$total_productos_venta,$total_venta)
         {
             $this->load->database();
             $this->db->trans_begin();//Inicio de transacción//
             
-            $this->db->query("INSERT INTO tab_venta(id_cliente,fecha_venta, total_productos_venta,total_venta) VALUES(".$id_cliente.", '".$fecha_venta."', "$total_productos_venta", "$total_venta")");
+            $this->db->query("INSERT INTO tab_venta(id_cliente,fecha_venta, total_productos_venta,total_venta) VALUES(".$id_cliente.", '".$fecha_venta."', ".$total_productos_venta.", ".$total_venta.")");
 
             $id_venta=$this->db->insert_id();//Funciona para recuperar el ultimo id autoincrement ingresado//
 
-             $this->db->query("INSERT INTO tab_venta_producto(id_venta, id_producto) VALUES("$id_venta", "$id_producto")");
+             $this->db->query("INSERT INTO tab_venta_producto(id_venta, id_producto) VALUES(".$id_venta.", ".$id_producto.")");
 
              if($this->db->trans_status()===false;
              {
@@ -58,7 +58,7 @@ class Venta_model extends CI_Model
                 return 1;
              }   //Fin de Insercion de datos//
 
-        }*/
+        }
 
     
 }//Fin de clase Venta_model//
