@@ -17,6 +17,7 @@
 <!--select2-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 
@@ -51,7 +52,7 @@
           <!-- Tercero campo-->
           <div class="col-md-12 form-group input-group">
             <label for="" class="input-group-addon"> Seleccionar un Producto:</label>
-            <select class="js-example-basic-single form-control" id='nombre_producto' name="nombre_producto" onchange="precio()">
+            <select class="form-control" id='nombre_producto' name="nombre_producto" onchange="precio()">
             </select>
           </div>
           <!-- Cuarto campo-->
@@ -62,7 +63,7 @@
           <!-- Quinto campo-->
           <div class="col-md-12 form-group input-group">
              <label for="" class="input-group-addon"> Cantidad:</label>
-             <input type="number" min="1" id="cantidad" name="cantidad" class="form-control" onblur="operacion()">
+             <input type="number" min="1" id="cantidad" name="cantidad" class="form-control" onblur="existencias()">
           </div>
           <!-- sexto campo-->
           <div class="col-md-12 form-group input-group">
@@ -95,15 +96,15 @@ $(document).ready(function()
 {
   llenarCliente();
   llenarProducto();
-  modal();
-  select();
+ // modal();
+ // select();
   calendario();
-  operacion();
+  //operacion();
   //existencias();
-  precio();
-  guardar();
-
-})
+//  precio();
+ // guardar();
+  // $('#venta').show();
+});
 
  //Modal
  function modal()
@@ -160,52 +161,65 @@ function llenarProducto()
   });
 }
 
-/*function existencias(){
-  var idp=$(#'nombre_producto').val();
-  var cant=$(#'cantidad').val();
-  $.ajax ({
-    type:"GET",
-    url:'<?php //echo site_url(); ?> Venta/conseguirexistencia',
-    data: 'idp='+idp & 'cant='+cant,
-    success: function(data){
-      if(data==1){
-        $('#cantidad').val()
-        swal ("Cantidad inexistente")
-      }
-      if(data==2){
-        swal("no se q poner xD")
-      }
-      
-    }
-  });
-}*/
 
-  function precio(){
+
+  function precio()
+  {
+    alert('entra');
      var id=$('#nombre_producto').val();
       $.ajax({                        
         type: "POST",                 
-        url:'<?php echo site_url(); ?> Venta/precio',
+        url:'<?php echo site_url();?>Venta/precio',
         data:'id='+id,
          //dataType:'json',
         success: function(data)             
           {
-            $('#precio_unitario_producto').html(data);
+            $('#precio_unitario_producto').val(data);
                         
           }
       });                
        
-     }
-
-
-  function guardar(){
-    $.ajax({
-      type:"POST",
-      url:'<?php echo site_url(); ?> Venta/ingresarventas', 
-      data: $('')
-    });
   }
 
 
+ function guardar(){
+    $.ajax({
+      type:"POST",
+      url:'<?php echo site_url();?>Venta/ingresarventas', 
+      data: $('form_venta').serialize(),
+      success: function(data)
+      {
+        if(data==1){
+          swal("Datos ingresados exitosamente",'LACAAAAAAAAAAAAAAAAA','success'); 
+        }
+
+        if(data==0){
+           swal("Laca, no sirve esta onda xD"); 
+        }
+      }
+    });
+  }
+
+function existencias(){
+  var idp=$('#nombre_producto').val();
+  var cant=$('#cantidad').val();
+  $.ajax ({
+    type:"GET",
+    url:'<?php echo site_url();?>Venta/conseguirexistencia',
+    data: 'idp='+idp+'&cant='+cant,
+    success: function(data){
+      if(data==0){
+        $('#cantidad').val('');
+        swal("Cantidad inexistente",'debe poner algo aqui','error');
+        //  $('#cantidad').focus();
+      } 
+      else 
+      {
+        operacion();
+      }    
+    }
+  });
+}
 
 
 </script>

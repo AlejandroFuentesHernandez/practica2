@@ -19,13 +19,13 @@ class Venta_model extends CI_Model
             return $result->result_array();
         }//Fin de llamado de producto//
 
-       /*  public function getExistencias($id)
+        public function getExistencias($id)
         {
             $this->load->database();
             $this->db->where('id_producto',$id);
             $result=$this->db->get('tab_producto');
             return $result->row()->existencias_producto;
-        }*/
+        }
 
         public function getPrecio($id)
         {
