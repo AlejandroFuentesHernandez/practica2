@@ -52,7 +52,7 @@ class Venta_model extends CI_Model
 
              if($this->db->trans_status()===false)
              {
-                $this->db->trans_rollback();//no se guarda nada en la base, todo lo que se mando se borra
+                $this->db->trans_rollback();//no se guarda nada en la base, todo volvera desde cero como que si no se hubiera hecho nada
                 return 0;
              }else
              {

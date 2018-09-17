@@ -15,19 +15,17 @@
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script src="js/bootstrap-datetimepicker.min.js"></script>
 <!--select2-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <!--sweetalert.-->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
-
-
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#venta"> Registro Venta </button>
+<body style="background-color:#0B427C;">
 
 <!-- Modal -->
 <div class="modal fade" id="venta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document"> <!-- Establece el ancho y el margen del modal-->
+  <div class="modal-dialog" role="document"> <!-- Establece el ancho y el margen del modal-->
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title" id="exampleModalLongTitle">Registro Venta</h1>
@@ -39,6 +37,7 @@
         <form id="form_venta" action="" method="POST"> 
           <!-- Primer campo-->
           <div class="col-md-12 form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
             <label for="" class="input-group-addon"> Seleccionar Cliente:</label>
             <select class="form-control" id='nombre_cliente' name="nombre_cliente">
             </select>
@@ -46,6 +45,7 @@
           </div>  
            <!-- Segundo campo-->        
           <div class="col-md-12 form-group input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> 
             <label for="" class="input-group-addon"> Fecha de Venta:</label>
             <input class="form-control" size="16" type="text"  id="fecha_venta" name="fecha_venta" readonly>
 
@@ -59,7 +59,7 @@
           <!-- Cuarto campo-->
           <div class="col-md-12 form-group input-group">
             <label for=""  class="input-group-addon"> Precio u.</label>
-            <input type="text" id="precio_unitario_producto" name="dprecio_unitario_producto" class="form-control">
+            <input type="text" id="precio_unitario_producto" name="dprecio_unitario_producto" class="form-control" disabled>
           </div>
           <!-- Quinto campo-->
           <div class="col-md-12 form-group input-group">
@@ -69,7 +69,7 @@
           <!-- sexto campo-->
           <div class="col-md-12 form-group input-group">
             <label for="" class="input-group-addon">Total</label>
-            <input type="text" id="total" name="total" class="form-control">
+            <input type="text" id="total" name="total" class="form-control" readonly="readonly">
           </div>
           <div class="col-md-12 text-center">
           <!-- limpiar-->
@@ -80,7 +80,7 @@
         </form>                 
       </div> <!--cierra body del modal-->
 
-      <div class="modal-footer">
+     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
       </div>
@@ -88,7 +88,7 @@
     </div>
   </div>
 </div>        
-      
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#venta"> Registro Venta </button> <!--Boton para abir el modal-->
 </body>
 </html>
 
@@ -98,25 +98,21 @@ $(document).ready(function()
   llenarCliente();
   llenarProducto();
  // modal();
- // select();
+  select();
   calendario();
-  //operacion();
-  //existencias();
-//  precio();
- // guardar();
-  // $('#venta').show();
+  $('#venta').modal("show"); //nos abre el modal sin necesidad de apretar un boton
 });
 
  //Modal
- function modal()
+ /*function modal()
  {
   $('#venta').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')
     });
- }
+ }*/
 
 function select(){
-  $('#nombre_producto').select2();
+  $('#nombre_cliente').select2();
 }
 
 function calendario() 
@@ -128,8 +124,8 @@ function calendario()
 
  function operacion()
 {
-    var uno=parseInt($('#precio_unitario_producto').val());
-    var dos=parseInt($('#cantidad').val());
+    var uno=parseFloat($('#precio_unitario_producto').val());
+    var dos=$('#cantidad').val();
     var multi=uno*dos;
     $('#total').val(multi);
 }
@@ -166,7 +162,7 @@ function llenarProducto()
 
   function precio()
   {
-    alert('entra');
+    
      var id=$('#nombre_producto').val();
       $.ajax({                        
         type: "POST",                 

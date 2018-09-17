@@ -6,7 +6,7 @@ class Venta extends CI_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Venta_model','VM',TRUE);
+		$this->load->model('Venta_model','VM',TRUE); //carga el modelo 
 	}
 
 	public function index()
@@ -38,7 +38,7 @@ class Venta extends CI_Controller{
 		if($result<$cantidad)
 		{
 		
-			echo 0;
+			echo 0; //Ajax reconoce todo lo que se le mande por echo
 		}else
 		{
 			echo 1; 
