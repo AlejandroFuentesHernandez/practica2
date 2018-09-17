@@ -55,23 +55,21 @@ class Venta extends CI_Controller{
 
 
 
-/*	public function ingresarventas()// metodo ingresar datos en la base de datos
+	public function ingresarventas()// metodo ingresar datos en la base de datos
 	{
 		
 		$id_cliente=>$this->input->post('nombre_cliente');//ingresar los datos capturados por los input de el frmVenta
 		$fecha_venta=>$this->input->post('fecha_venta');
-					=>$this->input->post('nombre_producto');
+		$id_producto=$this->input->post('nombre_producto');
 					=>$this->input->post('precio_unitario_producto');
 		$total_productos_venta=>$this->input->post('cantidad');
 		$total_venta=>$this->input->post('total');
-
 		
 
+		echo $this->VM->nuevoVenta($id_cliente,$fecha_venta,$total_productos_venta,$total_venta,$id_producto);
 
 
-
-		$id_venta=>$this->input->post();
-		$id_producto=>$this->input->post();
+		
 
 
 
@@ -79,7 +77,7 @@ class Venta extends CI_Controller{
 		
 
 		
-	}*/
+	}
 	
 }
 ?>
