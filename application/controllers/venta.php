@@ -30,7 +30,7 @@ class Venta extends CI_Controller{
 		}
 	}
 	
-	/*public function conseguirexistencia()
+	public function conseguirexistencia()
 	{
 		$id_producto=$this->input->get('idp');
 		$cantidad=$this->input->get('cant');
@@ -38,19 +38,18 @@ class Venta extends CI_Controller{
 		if($result<$cantidad)
 		{
 		echo "$cantidad";
-			return 0;
+			echo 0;
 		}else
 		{
-			return 1; 
+			echo 1; 
 		}
 	}*/
 
 	public function precio()
 	{
 		$id_producto=$this->input->post('id');
-		$resultado=$this->DM->getPrecio($id_producto);
-		echo json_encode($resultado);
-		//echo "$resultado";
+		echo $this->VM->getPrecio($id_producto);
+		
 	}
 
 
