@@ -15,6 +15,7 @@ class Venta_model extends CI_Model
             public function getProducto()
         {
             $this->load->database();
+            $this->db->where('estado_producto=1');
             $result=$this->db->get('tab_producto');
             return $result->result_array();
         }//Fin de llamado de producto//
@@ -33,8 +34,7 @@ class Venta_model extends CI_Model
             $this->db->where('id_producto',$id);
             $result=$this->db->get('tab_producto');
             return $result->row()->precio_unitario_producto;
-        }         
-
+        }     
 
          //Insercion de datos//
         public function nuevoVenta($id_cliente,$fecha_venta,$id_producto, $total_productos_venta,$total_venta)
