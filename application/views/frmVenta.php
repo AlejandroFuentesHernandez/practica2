@@ -3,28 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>Ventas</title>
-    <script  src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="   crossorigin="anonymous"></script>
-    <!-- Bootstrap CDN -->
-        <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!--- calendario-->
-<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-<script src="js/bootstrap-datetimepicker.min.js"></script>
-<!--select2-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<!--sweetalert.-->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <?php include 'url.php';?>
 </head>
 
 <body style="background-color:#0B427C;">
 
 <!-- Modal -->
-<div class="modal fade" id="venta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="venta" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"> <!--se elimino el tabindex, el cual tenia la funcion de cerrar el modal con ESC-->
   <div class="modal-dialog" role="document"> <!-- Establece el ancho y el margen del modal-->
     <div class="modal-content">
       <div class="modal-header">
@@ -45,9 +30,10 @@
           </div>  
            <!-- Segundo campo-->        
           <div class="col-md-12 form-group input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> 
+            
             <label for="" class="input-group-addon"> Fecha de Venta:</label>
             <input class="form-control" size="16" type="text"  id="fecha_venta" name="fecha_venta" readonly>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> 
 
           </div>                              
           <!-- Tercero campo-->
@@ -60,6 +46,7 @@
           <div class="col-md-12 form-group input-group">
             <label for=""  class="input-group-addon"> Precio u.</label>
             <input type="text" id="precio_unitario_producto" name="dprecio_unitario_producto" class="form-control" disabled>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span> 
           </div>
           <!-- Quinto campo-->
           <div class="col-md-12 form-group input-group">
@@ -71,17 +58,16 @@
             <label for="" class="input-group-addon">Total</label>
             <input type="text" id="total" name="total" class="form-control" readonly="readonly">
           </div>
-          <div class="col-md-12 text-center">
-          <!-- limpiar-->
-            <a href="<?php echo site_url();?>Venta" class="btn btn-primary">Limpiar</a>
-          <!-- Boton Guardar-->
-            <button type="button" onclick="guardar()" class="btn btn-success">Guardar</button>
-          </div>
+          
         </form>                 
       </div> <!--cierra body del modal-->
 
      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      <!-- limpiar-->
+        <a href="<?php echo site_url();?>Venta" class="btn btn-primary">Limpiar</a>
+      <!-- Boton Guardar-->
+        <button type="button" onclick="guardar()" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
       <!--  <button type="button" class="btn btn-primary">Save changes</button>-->
       </div>
 
