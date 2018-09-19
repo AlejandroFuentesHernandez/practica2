@@ -51,7 +51,7 @@
           <!-- Quinto campo-->
           <div class="col-md-12 form-group input-group">
              <label for="" class="input-group-addon"> Cantidad:</label>
-             <input type="number" min="1" id="cantidad" name="cantidad" class="form-control" onblur="existencias()">
+             <input type="number" min="1" id="cantidad" name="cantidad" class="form-control" onkeyup="if(this.value==0){this.value='';this.value=1;}" onblur="existencias()">
           </div>
           <!-- sexto campo-->
           <div class="col-md-12 form-group input-group">
