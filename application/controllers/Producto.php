@@ -17,9 +17,17 @@ public function index()
 
 public function mostrar()
 {  
-    $data['detalle']=$this->PM->mostrar_producto();
-    echo json_encode($data);
+    $data=$this->PM->mostrar_producto();
+   echo json_encode($data);
     //print_r($data);
     
 
 }
+
+}
+
+/*
+
+
+
+*/
