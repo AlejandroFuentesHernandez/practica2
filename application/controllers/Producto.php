@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Venta extends CI_Controller{
+class Producto extends CI_Controller{
 
 public function __construct()
 {
@@ -15,6 +15,11 @@ public function index()
 	$this->load->view('producto_view.php');
 }
 
-
+public function mostrar()
+{  
+    $data['detalle']=$this->inventario->mostrar_producto();
+    print_r($data);
+    //$this->load->view('',$data);
+}
 
 }
