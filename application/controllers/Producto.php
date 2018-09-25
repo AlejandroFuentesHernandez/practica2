@@ -17,9 +17,9 @@ public function index()
 
 public function mostrar()
 {  
-    $data['detalle']=$this->inventario->mostrar_producto();
-    print_r($data);
-    //$this->load->view('',$data);
-}
+    $data['detalle']=$this->PM->mostrar_producto();
+    echo json_encode($data);
+    //print_r($data);
+    
 
 }
