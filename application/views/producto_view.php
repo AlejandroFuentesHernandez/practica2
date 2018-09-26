@@ -44,21 +44,16 @@ precio_unitario_producto
 </head>
 <body>
 	<div class="container">
-		<!-- car titulo color blanco texto en negro-->
 		<div class="row">
 			<div class="well well-sm">
-		  <div class="card bg-light text-dark">
+		  <div class="card bg-light text-dark"><!-- car titulo color blanco texto en negro-->
 			<div class="card-header">
 				<!-- car titulo  para modulo inventario-->
 				<h4 class="card-title">Modulo del inventario</h4>
-
-			</div><!-- encabezado-->
-		</div><!--card bg encabezado -->
-		</div><!--well pegado borde gris y borde redondeado  //"serverSide": true,//{data": ["nombre_prod"]};  -->
-
-				<h6 class="card-subtitle"> listado de productos</h6>
+			</div><!-- encabezado-->		
 		<div class="card bg-info text-white">
 			<div class="card-body">
+				<h4 class="card-subtitle"> listado de productos</h4><!-- carta azul contenedor de la data table-->
 				<div class="table-responsive">
 				<table id="tabpro" border="1" class="display" style="width: 100%">
 					<thead>
@@ -76,17 +71,14 @@ precio_unitario_producto
 							
 						</tr>
 					</thead>
-				<!-- 	<tbody id="showdata">
-						
-					</tbody>
- -->
-					
 				</table>
 				</div><!-- tabla responsive-->
 			</div><!-- card body-->
 
 			<div class="card-footer"></div>
 		</div><!-- texto fondo blanco-->
+		</div><!--card bg encabezado -->
+		</div><!--well pegado borde gris y borde redondeado   -->
 		</div><!-- classrow-->
 	</div><!-- container-->
 	
@@ -95,7 +87,7 @@ precio_unitario_producto
 
 
 	$(document).ready(function(){
-	 //mostrarUsuarios();
+	 
 	 $('#tabpro').DataTable({
 	 		 "ajax": {
 	            "url":  "<?php echo site_url();?>/Producto/mostrar",
@@ -114,53 +106,6 @@ precio_unitario_producto
 	 });
 		
 	});
-	/*function mostrarUsuarios()
-	{
-		
-		$.ajax({
-			"ajax":,//hereda todas las opcione disponibles por jquery
-			"url":"<?php echo base_url() ?>Producto/mostrar"
-			"dataSrc":""//para alterar que dtaos leera el json
-			"data":{
-			"user_id": #showdata
-		}
-
-		}),
-			
-	}
-	$.ajax({
-			type: 'ajax',
-			url: '<?php echo base_url() ?>Producto/mostrar',
-			async:false,
-			dataType: 'json',
-			success: function(data){
-				var html = '';
-				var i;
-
-				for(i=0;i<data.length;i++)
-				{ 
-					html += '<tr>'+
-							'<td>'+data[i].nombre_producto+'</td>'+
-							'<td>'+data[i].nombre_tipo+'<td>'+
-							'<td>'+data[i].descripcion_producto+'</td>'+
-							'<td>'+data[i].nombre_proveedor+'</td>'+
-							'<td>'+data[i].stock_minimo_producto+'</td>'+
-							'<td>'+data[i].existencias_producto+'</td>'+
-							'<td>'+data[i].estado_producto+'</td>'+
-							'<td>'+data[i].fecha_caducidad_producto+'</td>'+
-							'<td>'+data[i].precio_unitario_producto+'</td>'
-							//'<td>'<a href="javascript:;" class="btn btn-success item-view" data="'+data[i].id_producto'"><i class=""></i></a>
-							//'</td>'+
-							//'<td>'<a href="javascript:;" class="btn btn-info item-edit" data="'+data[i].id_producto'"><i class=""></i></a>'</td>'+
-								//'<td>'<a href="javascript:;" class="btn btn-danger item-delete" data="'+data[i].id_producto'"><i class=""></i></a>'</td>'
-						'</tr>';
-				}
-				$('#showdata').html(html);
-			},
-			error: function()
-			{
-				alert('No se pudo obtener los datos');
-			}
-		});*/
+	
 </script>
 </html>
