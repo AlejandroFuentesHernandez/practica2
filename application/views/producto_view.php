@@ -22,7 +22,7 @@ precio_unitario_producto
 <head>
 	<title>Tabla productos</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-witdth, inicial-scale="1">
+	<meta name="viewport" content="width=device-witdth, inicial-scale=1,shrink-to-fit=no">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -36,11 +36,16 @@ precio_unitario_producto
 <!-- max -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/Style_producto.css">-->
 
 </head>
-<body style="background-color: #99ffd6 ">
-	<div class="container" >
-		<div class="row" align="center">
+<body>
+	<div class="container">
+		
+		<div class="row">
+			<div id="col12" class="col-lg-12">
+		
+			
 			<div class="card" align="center">
 				<div class="center-block"><!-- center-->
 			<div class="well well-sm">     
@@ -53,7 +58,7 @@ precio_unitario_producto
 			<div class="card-body">
 				<h4 class="card-subtitle"> listado de productos</h4><!-- carta azul contenedor de la data table-->
 				<div class="table-responsive">
-				<table id="tabpro" border="1" class="display" style="width: 100%">
+				<table id="tabpro" border="1" class="display nowrap" style="width: 100%">
 					<thead>
 						<tr>
 							<!--<th style="" scope="">Id_producto</th>-->
@@ -74,13 +79,15 @@ precio_unitario_producto
 			</div><!-- card body-->
 			<div class="card-footer"></div>
 			</div><!-- center-->
-			
+			<a href="#" class="btn btn-primary">exel</a><button id="button" class="btn btn-primary">PDF</button>
 		</div><!-- texto fondo blanco-->
 		</div><!--card bg encabezado -->
 		</div><!--well pegado borde gris y borde redondeado   -->
 		
 		</div><!-- card -->
-		</div><!-- classrow-->
+		
+	</div><!--row justify-->
+	</div><!-- col md12-->
 	</div><!-- container-->
 	
 </body>
@@ -89,10 +96,11 @@ precio_unitario_producto
 
 	$(document).ready(function(){
 	 
-	 $('#tabpro').DataTable({
+	 $('#tabpro').DataTable({//mostrar las columnas de abajo en el formulario
 	 		 "ajax": {
-	            "url":  "<?php echo site_url();?>/Producto/mostrar",
-	            "dataSrc": ""
+	            "url":  "<?php echo site_url();?>/Producto/mostrar",//conexion con el modelo
+	            "dataSrc": "",//mostrar en bloque los datos consltado
+	            "responsive":"true"
 	        },
 	        "columns":[
 		{"data":"nombre_producto"},
@@ -104,9 +112,10 @@ precio_unitario_producto
 		{"data":"estado_producto"},
 		{"data":"fecha_caducidad_producto"},
 		{"data":"precio_unitario_producto"}]
-	 });
-		
-	});
+
+	 });		
+});
 	
 </script>
+
 </html>
