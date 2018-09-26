@@ -43,7 +43,7 @@ precio_unitario_producto
 
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container">
 		<!-- car titulo color blanco texto en negro-->
 		<div class="row">
 			<div class="well well-sm">
@@ -76,10 +76,10 @@ precio_unitario_producto
 							
 						</tr>
 					</thead>
-					<tbody id="showdata">
+				<!-- 	<tbody id="showdata">
 						
 					</tbody>
-
+ -->
 					
 				</table>
 				</div><!-- tabla responsive-->
@@ -95,72 +95,40 @@ precio_unitario_producto
 
 
 	$(document).ready(function(){
-	 mostrarUsuarios();
+	 //mostrarUsuarios();
 	 $('#tabpro').DataTable({
-	 	 "ajax": {
-	            "url":  "<?php echo site_url();?>/Producto/llenar_tabla_ajax",
+	 		 "ajax": {
+	            "url":  "<?php echo site_url();?>/Producto/mostrar",
 	            "dataSrc": ""
 	        },
-	        "columns": [
-	            { "data": "nombre_producto" },
-	            { "data": "nombre_tipo" },
-	            { "data": "descripcion_producto" },
-	            { "data": "nombre_proveedor" },
-	            { "data": "stock_minimo_producto" },
-	            { "data": "existencias_producto" },
-	            { "data": "estado_producto" },
-	            { "data": "fecha_caducidad_producto" },
-	            { "data": "precio_unitario_producto" }
-	        ]
+	        "columns":[
+		{"data":"nombre_producto"},
+		{"data":"nombre_tipo"},
+		{"data":"descripcion_producto"},
+		{"data":"nombre_proveedor"},
+		{"data":"stock_minimo_producto"},
+		{"data":"existencias_producto"},
+		{"data":"estado_producto"},
+		{"data":"fecha_caducidad_producto"},
+		{"data":"precio_unitario_producto"}]
 	 });
 		
 	});
-	function mostrarUsuarios()
+	/*function mostrarUsuarios()
 	{
 		
-		$ajax({
-			type:'ajax',
+		$.ajax({
+			"ajax":,//hereda todas las opcione disponibles por jquery
 			"url":"<?php echo base_url() ?>Producto/mostrar"
-			dataSrc:"//mostrar_producto?//"
+			"dataSrc":""//para alterar que dtaos leera el json
+			"data":{
+			"user_id": #showdata
+		}
 
 		}),
-		"columns":[
-		{"data":"nombre_producto"},]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		/*$.ajax({
+			
+	}
+	$.ajax({
 			type: 'ajax',
 			url: '<?php echo base_url() ?>Producto/mostrar',
 			async:false,
@@ -180,7 +148,7 @@ precio_unitario_producto
 							'<td>'+data[i].existencias_producto+'</td>'+
 							'<td>'+data[i].estado_producto+'</td>'+
 							'<td>'+data[i].fecha_caducidad_producto+'</td>'+
-							'<td>'+data[i].precio_unitario_producto+'</td>'*/
+							'<td>'+data[i].precio_unitario_producto+'</td>'
 							//'<td>'<a href="javascript:;" class="btn btn-success item-view" data="'+data[i].id_producto'"><i class=""></i></a>
 							//'</td>'+
 							//'<td>'<a href="javascript:;" class="btn btn-info item-edit" data="'+data[i].id_producto'"><i class=""></i></a>'</td>'+
@@ -193,8 +161,6 @@ precio_unitario_producto
 			{
 				alert('No se pudo obtener los datos');
 			}
-		});
-	}
-	
+		});*/
 </script>
 </html>
