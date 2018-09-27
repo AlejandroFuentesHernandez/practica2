@@ -35,6 +35,24 @@ precio_unitario_producto
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <!-- max -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--buton-->
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+
+<!-- css buton-->
+<!--flexiblible-->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+
+
+
+
 
 <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/Style_producto.css">-->
 
@@ -42,23 +60,21 @@ precio_unitario_producto
 <body>
 	<div class="container">
 		
-		<div class="row">
-			<div id="col12" class="col-lg-12">
-		
+	
 			
-			<div class="card" align="center">
-				<div class="center-block"><!-- center-->
-			<div class="well well-sm">     
+			
+			
+			   
 		  <div class="card bg-light text-dark"><!-- car titulo color blanco texto en negro   style="background-color: #ffccff"-->
 			<div class="card-header">
 				<!-- car titulo  para modulo inventario-->
 				<h4 class="card-title">Modulo del inventario</h4>
 			</div><!-- encabezado-->		
-		<div class="card bg-info text-white">
+		
 			<div class="card-body">
 				<h4 class="card-subtitle"> listado de productos</h4><!-- carta azul contenedor de la data table-->
-				<div class="table-responsive">
-				<table id="tabpro" border="1" class="display nowrap" style="width: 100%">
+				
+				<table id="tabpro" border="1" class="dataTables_wrapper no-footer">
 					<thead>
 						<tr>
 							<!--<th style="" scope="">Id_producto</th>-->
@@ -75,19 +91,17 @@ precio_unitario_producto
 						</tr>
 					</thead>
 				</table>
-				</div><!-- tabla responsive-->
+				<!-- tabla responsive-->
 			</div><!-- card body-->
 			<div class="card-footer"></div>
 			</div><!-- center-->
-			<a href="#" class="btn btn-primary">exel</a><button id="button" class="btn btn-primary">PDF</button>
-		</div><!-- texto fondo blanco-->
-		</div><!--card bg encabezado -->
-		</div><!--well pegado borde gris y borde redondeado   -->
+		<!-- texto fondo blanco-->
+		<!--card bg encabezado -->
+		<!--well pegado borde gris y borde redondeado   -->
 		
-		</div><!-- card -->
+		<!-- card -->
 		
-	</div><!--row justify-->
-	</div><!-- col md12-->
+	
 	</div><!-- container-->
 	
 </body>
@@ -99,19 +113,28 @@ precio_unitario_producto
 	 $('#tabpro').DataTable({//mostrar las columnas de abajo en el formulario
 	 		 "ajax": {
 	            "url":  "<?php echo site_url();?>/Producto/mostrar",//conexion con el modelo
-	            "dataSrc": "",//mostrar en bloque los datos consltado
-	            "responsive":"true"
+	            "dataSrc": ""//mostrar en bloque los datos consltado
+	           
 	        },
+	         "scrolly": "200px",
+	            "scrollCollapse": false,
+	            "paging": false,
+	            "responsive":true,
 	        "columns":[
-		{"data":"nombre_producto"},
-		{"data":"nombre_tipo"},
-		{"data":"descripcion_producto"},
-		{"data":"nombre_proveedor"},
-		{"data":"stock_minimo_producto"},
-		{"data":"existencias_producto"},
-		{"data":"estado_producto"},
-		{"data":"fecha_caducidad_producto"},
-		{"data":"precio_unitario_producto"}]
+					{"data":"nombre_producto"},
+					{"data":"nombre_tipo"},
+					{"data":"descripcion_producto"},
+					{"data":"nombre_proveedor"},
+					{"data":"stock_minimo_producto"},
+					{"data":"existencias_producto"},
+					{"data":"estado_producto"},
+					{"data":"fecha_caducidad_producto"},
+					{"data":"precio_unitario_producto"}
+				],
+			"dom": 'Bfrtip',
+			"buttons": [
+	        		'copyHtml5', {extend: 'pdfHtml5',download:'open'}, 'excelHtml5'
+	        	]
 
 	 });		
 });
