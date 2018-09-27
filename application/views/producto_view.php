@@ -39,8 +39,8 @@ precio_unitario_producto
 		
 			<div class="card-body">
 				
-				
-				<table id="tabpro" border="1" class="dataTables_wrapper no-footer">
+				<!--<div class="table-responsive"></div>-->
+				<table id="tabpro" border="1" class="dataTables_wrapper table-responsive no-footer">
 					<thead>
 						<tr>
 							<!--<th style="" scope="">Id_producto</th>-->
@@ -57,11 +57,12 @@ precio_unitario_producto
 						</tr>
 					</thead>
 				</table>
+				<!--<div>-->
 				
 			</div><!-- card body-->
 			<div class="card-footer"></div>
 			</div><!-- card -->
-	</div><!-- container-->
+	<!-- container--></div>
 	
 </body>
 <script type="text/javascript">
