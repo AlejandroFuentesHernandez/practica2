@@ -10,10 +10,10 @@ existencias_producto
 estado_producto
 fecha_caducidad_producto
 precio_unitario_producto
-<!-- visualizacion css-->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/bootstrap.min.css">
 
 */
 //include 'url_boot.php';
@@ -26,46 +26,19 @@ precio_unitario_producto
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-witdth, inicial-scale=1,shrink-to-fit=no">
 
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/bootstrap.min.css">
-
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/jquery.dataTables.min.css">
-
-<!-- jquery min -->
-<script type="text/javascript" src="<?php echo base_url();?>js/jquery-3.3.1.js"></script>
-<!-- data table css -->
-<script type="text/javascript" src="<?php echo base_url()?>/js/jquery.dataTables.min.js"></script>
-<!-- ajax--->
-<script type="text/javascript" src="<?php echo base_url()?>/js/popper.min.js"></script>
-<!-- max -->
-<script type="text/javascript" src="<?php echo base_url()?>/js/bootstrap.min.js"></script>
-<!--buton-->
-<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-
-<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-
-<!-- css buton-->
-<!--flexiblible-->
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
-
-<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/Style_producto.css">-->
-
 </head>
 <body>
-	<div class="container">
-		  <div class="card bg-light text-dark"><!-- car titulo color blanco texto en negro   style="background-color: #ffccff"-->
+	<div id="container" class="container">
+		  <div class="card bg-info text-white"><!-- car titulo color blanco texto en negro   style="background-color: #ffccff"-->
 			<div class="card-header">
 				<!-- car titulo  para modulo inventario-->
-				<h4 class="card-title">Modulo del inventario</h4>
+				<h2 class="card-title">Modulo del inventario</h2>
+				<h3 class="card-subtitle" > listado de productos</h3>
+				<!-- carta azul contenedor de la data table-->
 			</div><!-- encabezado-->		
 		
 			<div class="card-body">
-				<h4 class="card-subtitle"> listado de productos</h4><!-- carta azul contenedor de la data table-->
+				
 				
 				<table id="tabpro" border="1" class="dataTables_wrapper no-footer">
 					<thead>
@@ -84,14 +57,10 @@ precio_unitario_producto
 						</tr>
 					</thead>
 				</table>
-				<!-- tabla responsive-->
+				
 			</div><!-- card body-->
 			<div class="card-footer"></div>
-			</div><!-- center-->
-		<!-- texto fondo blanco-->
-		<!--card bg encabezado -->
-		<!--well pegado borde gris y borde redondeado   -->
-		<!-- card -->
+			</div><!-- card -->
 	</div><!-- container-->
 	
 </body>
@@ -130,5 +99,6 @@ precio_unitario_producto
 });
 	
 </script>
+
 
 </html>

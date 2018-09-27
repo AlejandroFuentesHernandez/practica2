@@ -12,7 +12,12 @@ public function __construct()
 
 public function index()
 {
+	$this->load->view('url_include_producto');
+	
 	$this->load->view('producto_view.php');
+
+	
+	
 }
 
 public function mostrar()
