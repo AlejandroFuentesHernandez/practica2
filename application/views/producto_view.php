@@ -39,8 +39,10 @@ precio_unitario_producto
 			<div class="card-body">
 				
 				<!--<div class="table-responsive"></div>-->
-				<div align="right"><button type="submit" id="" name="" class="btn btn-primary"  data-toggle=""data-target="">Insertar</button></div>
-				<table id="tabpro" border="1" class="dataTables_wrapper table-responsive no-footer">
+				<div align="right">
+					<button type="submit" id="" name="" class="btn btn-primary  gryphicon glyphicon-plus"  data-toggle=""data-target="">+Insertar</button>
+				</div>
+				<table id="tabpro" border="1" class="dataTables_wrapper no-footer">
 					<thead>
 						<tr>
 							<!--<th style="" scope="">Id_producto</th>-->
