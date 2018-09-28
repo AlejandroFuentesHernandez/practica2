@@ -36,6 +36,10 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
+<!-- masked -->
+
+
+
 <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/css/Style_producto.css"> 
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>

@@ -27,10 +27,9 @@ precio_unitario_producto
 	<meta name="viewport" content="width=device-witdth, inicial-scale=1,shrink-to-fit=no">
 </head>
 <body>
+	<div id="header1"></div>
 	<div id="container" class="container" >
-		<pre>
-																			
-		</pre>	
+			
 		  <div class="card bg-info text-white"><!-- car titulo color blanco texto en negro   style="background-color: #ffccff"-->
 			<div class="card-header">
 				<!-- car titulo  para modulo inventario-->
@@ -68,8 +67,12 @@ precio_unitario_producto
 			</div><!-- card body-->
 			<div class="card-footer"></div>
 			</div><!-- card -->
-		
-			
+				<aside>
+				</aside>
+				<aside id="menu">
+						
+				</aside>
+				
 	<!-- container--></div>
 	
 <!-- modal-->
@@ -173,7 +176,7 @@ $(document).ready(function()
           },
            "scrolly": "200px",
               "scrollCollapse": false,
-              "paging": false,
+              "paging": true,
               "responsive":true,
           "columns":[
           {"data":"nombre_producto"},
