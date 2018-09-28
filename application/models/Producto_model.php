@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Producto_model extends CI_Model
 {
-	public function mostrar_producto(){
+	public function mostrar_producto()
+    {
         $this->db->select("p.nombre_producto, tp.nombre_tipo, p.descripcion_producto, pv.nombre_proveedor, p.stock_minimo_producto, p.existencias_producto, if(p.estado_producto>0,'Activo','Inactivo') as estado_producto, p.fecha_caducidad_producto, p.precio_unitario_producto");
         $this->db->from('tab_producto p');
         $this->db->join('tab_tipo_producto tp','tp.id_tipo= p.id_tipo_producto');
@@ -15,6 +16,30 @@ class Producto_model extends CI_Model
             return 0;
         }
     }
+    
+    public function getProveedor()
+    {
+        $resultado=$this->db->get('tab_proveedor');
+        return $resultado->result_array();
+    }
 
+    public function get_tipo()
+    {
+        $resultado=$this->db->get('tab_tipo_producto');
+        return $resultado->result_array();
+    }
+
+    public function guardar_producto($data)
+    {
+
+        $resultado=$this->db->insert('tab_producto',$data);
+        if($resultado==1){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+   
+   
     
 }
