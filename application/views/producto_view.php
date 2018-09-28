@@ -25,7 +25,6 @@ precio_unitario_producto
 	<title>Tabla productos</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-witdth, inicial-scale=1,shrink-to-fit=no">
-
 </head>
 <body>
 	<div id="container" class="container">
@@ -40,6 +39,7 @@ precio_unitario_producto
 			<div class="card-body">
 				
 				<!--<div class="table-responsive"></div>-->
+				<div align="right"><button type="submit" id="" name="" class="btn btn-primary"  data-toggle=""data-target="">Insertar</button></div>
 				<table id="tabpro" border="1" class="dataTables_wrapper table-responsive no-footer">
 					<thead>
 						<tr>
