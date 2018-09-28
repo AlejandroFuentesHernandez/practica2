@@ -153,45 +153,95 @@ precio_unitario_producto
 
 
 </body>
+
 <script type="text/javascript">
 
+$(document).ready(function()
+{
+    $('#tabpro').DataTable({//mostrar las columnas de abajo en el formulario
+       "ajax": {
+              "url":  "<?php echo site_url();?>/Producto/mostrar",//conexion con el modelo
+              "dataSrc": ""//mostrar en bloque los datos consltado
+             
+          },
+           "scrolly": "200px",
+              "scrollCollapse": false,
+              "paging": false,
+              "responsive":true,
+          "columns":[
+          {"data":"nombre_producto"},
+          {"data":"nombre_tipo"},
+          {"data":"descripcion_producto"},
+          {"data":"nombre_proveedor"},
+          {"data":"stock_minimo_producto"},
+          {"data":"existencias_producto"},
+          {"data":"estado_producto"},
+          {"data":"fecha_caducidad_producto"},
+          {"data":"precio_unitario_producto"}
+        ],
+      "dom": 'Bfrtip',
+      "buttons": [
+              'copyHtml5', {extend: 'pdfHtml5',download:'open'}, 'excelHtml5'
+            ]
 
-	$(document).ready(function(){
-	 
-	 $('#tabpro').DataTable({//mostrar las columnas de abajo en el formulario
-	 		 "ajax": {
-	            "url":  "<?php echo site_url();?>/Producto/mostrar",//conexion con el modelo
-	            "dataSrc": ""//mostrar en bloque los datos consltado
-	           
-	        },
-	         "scrolly": "200px",
-	            "scrollCollapse": false,
-	            "paging": false,
-	            "responsive":true,
-	        "columns":[
-					{"data":"nombre_producto"},
-					{"data":"nombre_tipo"},
-					{"data":"descripcion_producto"},
-					{"data":"nombre_proveedor"},
-					{"data":"stock_minimo_producto"},
-					{"data":"existencias_producto"},
-					{"data":"estado_producto"},
-					{"data":"fecha_caducidad_producto"},
-					{"data":"precio_unitario_producto"}
-				],
-			"dom": 'Bfrtip',
-			"buttons": [
-	        		'copyHtml5', {extend: 'pdfHtml5',download:'open'}, 'excelHtml5'
-	        	]
-
-	 });		
+   });  
+cargarProveedor();
+cargarTipoProducto();
+ 
 });
-	
-</script>
-<script>
-	$('#Producto').on('shown.bs.modal',function(){
-		$('#myInput').trigger('focus')
-	});
+
+$('#Producto').on('shown.bs.modal',function(){
+ $('#myInput').trigger('focus')
+  });
+
+function cargarProveedor()
+{
+  $.ajax({
+    type:"POST",
+    url:'<?php echo site_url();?>Producto/cargar_proveedor',
+    success: function(data)
+    {
+      $('#id_proveedor_producto').html('');
+      $('#id_proveedor_producto').html(data);
+    }
+
+  });
+}
+
+function cargarTipoProducto()
+{
+  $.ajax({
+    type:"POST",
+    url:'<?php echo site_url();?>Producto/cargar_tipo',
+    success: function(data)
+    {
+      $('#id_tipo_producto').html('');
+      $('#id_tipo_producto').html(data);
+    }
+
+  });
+}
+
+function guardar(){
+    $.ajax({
+      type:"POST",
+      url:'<?php echo site_url();?>Producto/guardar', 
+      data: $('#productoform').serialize(),
+      success: function(data)
+      {
+        if(data==1){
+          swal("Datos ingresados exitosamente",'Exito','success'); 
+        }
+
+        if(data==0){
+           swal("Error al ingresar los datos"); 
+        }
+      }
+    });
+  }
+
+
+
 </script>
 
 </html>
