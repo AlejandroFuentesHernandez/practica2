@@ -40,7 +40,8 @@ precio_unitario_producto
 				
 				<!--<div class="table-responsive"></div>-->
 				<div align="right">
-					<button type="submit" id="" name="" class="btn btn-primary  gryphicon glyphicon-plus"  data-toggle=""data-target="">+Insertar</button>
+					<!--<button type="submit" id="" name="" class="btn btn-primary  gryphicon glyphicon-plus"  data-toggle=""data-target="">+Insertar</button>-->
+					<a href="#Producto" data-toggle="modal" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-plus"  ></span>Producto</a>
 				</div>
 				<table id="tabpro" border="1" class="dataTables_wrapper no-footer">
 					<thead>
@@ -66,6 +67,82 @@ precio_unitario_producto
 			</div><!-- card -->
 	<!-- container--></div>
 	
+<!-- modal-->
+<div class="modal fade" id="Producto" tabindex="6" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title" id="">Agregar Productos</h1><!--modal-title-->
+					<button type="button" class="close" data-dismiss="modal" arial-label="close">
+						<span aria-hidden="true">&times;</span>
+					</button><!-- close-->
+			</div><!-- modal-header-->
+				<div class="modal-body">
+					<form id="productoform" action="<?php echo site_url();?>/" method="POST">
+						<!--<div>
+							<label>Id producto</label>
+							<input type="" name="">
+						</div>-->
+						<div>
+							<label>Nombre Producto:</label>
+							<input type="text" id="nombre_producto" name="nombre_producto">
+						</div>
+						<div>
+							<label>ID tipo producto:</label>
+							<select id="id_tipo_producto" name="id_tipo_producto"></select>
+						</div>
+						<div>
+							<label>Descripcion producto</label>
+							<textarea id="descripcion_producto" name="descripcion_producto"></textarea>
+						</div>
+						<div>
+							<label>Id proveedor producto</label>
+							<select type="id_proveedor_producto" name="id_proveedor_producto"></select>
+						</div>
+						<div>
+							<label>Stock minimo producto</label>
+							<input type="number" id="stock_minimo_producto" name="stock_minimo_producto">
+						</div>
+						<div>
+							<label>Existencia producto</label>
+							<input type="text"  id="existencias_producto" name="existencias_producto">
+						</div>
+						<div>
+							<label>Estado Producto</label>
+							<select id="estado_producto" name="estado_producto">
+								<option value="1">Habilitado</option>
+								<option value="0">Inhabilidad</option>
+							</select>
+
+						</div>
+						<div>
+							<label>Fecha caducidad producto</label>
+							<input type="date" id="fecha_caducidad_producto" name="fecha_caducidad_producto">
+						</div>
+						<div>
+							<label>Precio Unitario producto</label>
+							<input type="number" id="precio_unitario_producto" name="precio_unitario_producto">
+						</div>
+						<div>
+							<!-- vaciar-->
+							<a href="<?php echo site_url();?>Producto">Vaciar</a>
+							<!-- button-->
+							<button type="button" onclick="">Guardar</button>
+						</div>
+					</form><!-- form-->
+				</div><!--modal body -->
+				
+		</div><!-- modal-content -->
+	</div><!--modal-dialog-->
+</div><!-- modal fade-->
+
+
+
+
+
+
+
+
 </body>
 <script type="text/javascript">
 
@@ -102,6 +179,10 @@ precio_unitario_producto
 });
 	
 </script>
-
+<script>
+	$('#Producto').on('shown.bs.modal',function(){
+		$('#myInput').trigger('focus')
+	});
+</script>
 
 </html>
