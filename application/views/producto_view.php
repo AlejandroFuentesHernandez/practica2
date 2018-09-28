@@ -69,10 +69,10 @@ precio_unitario_producto
 	
 <!-- modal-->
 <div class="modal fade" id="Producto" tabindex="6" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h1 class="modal-title" id="">Agregar Productos</h1><!--modal-title-->
+				<h1 class="modal-title" id="exampleModalLongTitle">Agregar Productos</h1><!--modal-title-->
 					<button type="button" class="close" data-dismiss="modal" arial-label="close">
 						<span aria-hidden="true">&times;</span>
 					</button><!-- close-->
@@ -83,51 +83,60 @@ precio_unitario_producto
 							<label>Id producto</label>
 							<input type="" name="">
 						</div>-->
-						<div>
-							<label>Nombre Producto:</label>
-							<input type="text" id="nombre_producto" name="nombre_producto">
+						<!-- nombre producto-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Nombre Producto:</label>
+							<input type="text" id="nombre_producto" name="nombre_producto" class="form-control">
 						</div>
-						<div>
-							<label>ID tipo producto:</label>
-							<select id="id_tipo_producto" name="id_tipo_producto"></select>
+						<!-- tipo producto-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">ID tipo producto:</label>
+							<select id="id_tipo_producto" name="id_tipo_producto" class="form-control"></select>
 						</div>
-						<div>
-							<label>Descripcion producto</label>
-							<textarea id="descripcion_producto" name="descripcion_producto"></textarea>
+						<!-- descripcion-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Descripcion producto:</label>
+							<textarea id="descripcion_producto" name="descripcion_producto" class="form-control"></textarea>
 						</div>
-						<div>
-							<label>Id proveedor producto</label>
-							<select type="id_proveedor_producto" name="id_proveedor_producto"></select>
+						<!-- id proveedor-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Id proveedor producto:</label>
+							<select id="id_proveedor_producto" name="id_proveedor_producto" class="form-control"></select>
 						</div>
-						<div>
-							<label>Stock minimo producto</label>
-							<input type="number" id="stock_minimo_producto" name="stock_minimo_producto">
+						<!--stock -->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Stock minimo producto</label>
+							<input type="number" id="stock_minimo_producto" name="stock_minimo_producto" min="0" class="form-control">
 						</div>
-						<div>
-							<label>Existencia producto</label>
-							<input type="text"  id="existencias_producto" name="existencias_producto">
+						<!-- existencia-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Existencia producto:</label>
+							<input type="text"  id="existencias_producto" name="existencias_producto" class="form-control">
 						</div>
-						<div>
-							<label>Estado Producto</label>
-							<select id="estado_producto" name="estado_producto">
+						<!-- estado-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Estado Producto</label>
+							<select id="estado_producto" name="estado_producto" class="form-control">
 								<option value="1">Habilitado</option>
 								<option value="0">Inhabilidad</option>
 							</select>
-
 						</div>
-						<div>
-							<label>Fecha caducidad producto</label>
-							<input type="date" id="fecha_caducidad_producto" name="fecha_caducidad_producto">
+						<!-- fecha caducidad-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Fecha caducidad producto</label>
+							<input type="date" id="fecha_caducidad_producto" name="fecha_caducidad_producto" class="form-control">
 						</div>
-						<div>
-							<label>Precio Unitario producto</label>
-							<input type="number" id="precio_unitario_producto" name="precio_unitario_producto">
+						<!-- precio unitario-->
+						<div class="col-md-12 form-group input-group">
+							<label for="" class="input-group-addon">Precio Unitario producto</label>
+							<input type="number" id="precio_unitario_producto" name="precio_unitario_producto" min="0" class="form-control">
 						</div>
-						<div>
+						<!-- button-->
+						<div class="col-md-12 form-control input-group">
 							<!-- vaciar-->
-							<a href="<?php echo site_url();?>Producto">Vaciar</a>
+							<a href="<?php echo site_url();?>Producto" class="btn btn-primary">Vaciar</a>
 							<!-- button-->
-							<button type="button" onclick="">Guardar</button>
+							<button type="button" onclick="" class="btn btn-success">Guardar</button>
 						</div>
 					</form><!-- form-->
 				</div><!--modal body -->
