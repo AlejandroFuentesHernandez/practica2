@@ -27,7 +27,10 @@ precio_unitario_producto
 	<meta name="viewport" content="width=device-witdth, inicial-scale=1,shrink-to-fit=no">
 </head>
 <body>
-	<div id="container" class="container">
+	<div id="container" class="container" >
+		<pre>
+																			
+		</pre>	
 		  <div class="card bg-info text-white"><!-- car titulo color blanco texto en negro   style="background-color: #ffccff"-->
 			<div class="card-header">
 				<!-- car titulo  para modulo inventario-->
@@ -65,6 +68,8 @@ precio_unitario_producto
 			</div><!-- card body-->
 			<div class="card-footer"></div>
 			</div><!-- card -->
+		
+			
 	<!-- container--></div>
 	
 <!-- modal-->
@@ -137,6 +142,8 @@ precio_unitario_producto
 							<a href="<?php echo site_url();?>producto_view" class="btn btn-primary">Vaciar</a>
 							<!-- button-->
 							<button type="button" onclick="guardar()" class="btn btn-success">Guardar</button>
+
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 						</div>
 					</form><!-- form-->
 				</div><!--modal body -->
