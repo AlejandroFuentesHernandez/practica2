@@ -86,12 +86,12 @@ precio_unitario_producto
 						<!-- nombre producto-->
 						<div class="col-md-12 form-group input-group">
 							<label for="" class="input-group-addon">Nombre Producto:</label>
-							<input type="text" id="nombre_producto" name="nombre_producto" class="form-control">
+							<input type="text" id="nombre_producto" name="nombre_producto" placeholder="Nombre" class="form-control">
 						</div>
 						<!-- tipo producto-->
 						<div class="col-md-12 form-group input-group">
-							<label for="" class="input-group-addon">ID tipo producto:</label>
-							<select id="id_tipo_producto" name="id_tipo_producto" class="form-control"></select>
+							<label for="" class="input-group-addon">Tipo producto:</label>
+							<select id="id_tipo_producto" name="id_tipo_producto" placeholder="Perecedero"class="form-control"></select>
 						</div>
 						<!-- descripcion-->
 						<div class="col-md-12 form-group input-group">
@@ -100,36 +100,36 @@ precio_unitario_producto
 						</div>
 						<!-- id proveedor-->
 						<div class="col-md-12 form-group input-group">
-							<label for="" class="input-group-addon">Id proveedor producto:</label>
-							<select id="id_proveedor_producto" name="id_proveedor_producto" class="form-control"></select>
+							<label for="" class="input-group-addon">Proveedor:</label>
+							<select id="id_proveedor_producto" name="id_proveedor_producto" placeholder="Proveedor" class="form-control"></select>
 						</div>
 						<!--stock -->
 						<div class="col-md-12 form-group input-group">
-							<label for="" class="input-group-addon">Stock minimo producto</label>
-							<input type="number" id="stock_minimo_producto" name="stock_minimo_producto" min="0" class="form-control">
+							<label for="" class="input-group-addon">Stock minimo</label>
+							<input type="number" id="stock_minimo_producto" name="stock_minimo_producto" min="0" placeholder=" minimo 0" class="form-control">
 						</div>
 						<!-- existencia-->
 						<div class="col-md-12 form-group input-group">
-							<label for="" class="input-group-addon">Existencia producto:</label>
-							<input type="text"  id="existencias_producto" name="existencias_producto" class="form-control">
+							<label for="" class="input-group-addon">Cantidad:</label>
+							<input type="number"  id="existencias_producto" name="existencias_producto" min="0"placeholder="Minimo 0"class="form-control">
 						</div>
 						<!-- estado-->
 						<div class="col-md-12 form-group input-group">
 							<label for="" class="input-group-addon">Estado Producto</label>
 							<select id="estado_producto" name="estado_producto" class="form-control">
-								<option value="1">Habilitado</option>
-								<option value="0">Inhabilidad</option>
+								<option value="1">Activo</option>
+								<option value="0">Inactivo</option>
 							</select>
 						</div>
 						<!-- fecha caducidad-->
 						<div class="col-md-12 form-group input-group">
-							<label for="" class="input-group-addon">Fecha caducidad producto</label>
+							<label for="" class="input-group-addon">Fecha caducidad</label>
 							<input type="date" id="fecha_caducidad_producto" name="fecha_caducidad_producto" class="form-control">
 						</div>
 						<!-- precio unitario-->
 						<div class="col-md-12 form-group input-group">
-							<label for="" class="input-group-addon">Precio Unitario producto</label>
-							<input type="number" id="precio_unitario_producto" name="precio_unitario_producto" min="0" class="form-control">
+							<label for="" class="input-group-addon">Precio Unitario</label>
+							<input type="number" id="precio_unitario_producto" name="precio_unitario_producto" min="0" placeholder="Minimo 0" class="form-control">
 						</div>
 						<!-- button-->
 						<div class="col-md-12 form-control input-group">
