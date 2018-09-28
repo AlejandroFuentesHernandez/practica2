@@ -146,9 +146,7 @@ function llenarProducto()
 
   });
 }
-
-
-
+//se manda a llamar el precio
   function precio()
   {
     

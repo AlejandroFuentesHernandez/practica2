@@ -50,7 +50,7 @@ class Venta extends CI_Controller{
 			echo 1; 
 		}*/
 	}
-
+	//se manda a llamar el precio
 	public function precio()
 	{
 		$id_producto=$this->input->post('id');

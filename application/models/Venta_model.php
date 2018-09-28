@@ -27,7 +27,7 @@ class Venta_model extends CI_Model
             return $result->row()->campo;
             //print_r($result);
         } 
-
+        //se mandaa a llamar el precio 
         public function getPrecio($id)
         {
             $this->load->database();
