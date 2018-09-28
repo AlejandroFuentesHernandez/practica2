@@ -71,8 +71,24 @@ function cargarTipoProducto()
   });
 }
 
+//funcion de guardar// ///
+function guardar(){
+    $.ajax({
+      type:"POST",
+      url:'<?php echo site_url();?>Producto/guardar', 
+      data: $('#productoform').serialize(),
+      success: function(data)
+      {
+        if(data==1){
+          swal("Datos ingresados exitosamente",'Exito','success'); 
+        }
 
-
+        if(data==0){
+           swal("Error al ingresar los datos"); 
+        }
+      }
+    });
+  }
 
 
 
