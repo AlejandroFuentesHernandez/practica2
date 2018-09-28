@@ -29,7 +29,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
-*.php
+
 application/models/Producto_model.php
 application/models/Producto_model.php
 application/models/Producto_model.php
