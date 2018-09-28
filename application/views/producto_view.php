@@ -134,9 +134,9 @@ precio_unitario_producto
 						<!-- button-->
 						<div class="col-md-12 form-control input-group">
 							<!-- vaciar-->
-							<a href="<?php echo site_url();?>Producto" class="btn btn-primary">Vaciar</a>
+							<a href="<?php echo site_url();?>producto_view" class="btn btn-primary">Vaciar</a>
 							<!-- button-->
-							<button type="button" onclick="" class="btn btn-success">Guardar</button>
+							<button type="button" onclick="guardar()" class="btn btn-success">Guardar</button>
 						</div>
 					</form><!-- form-->
 				</div><!--modal body -->
