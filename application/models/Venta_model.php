@@ -20,12 +20,12 @@ class Venta_model extends CI_Model
             return $result->result_array();
         }//Fin de llamado de producto//
 
-       public function getExistencias($id)
+       public function getExistencias($cantidad,$id)
         {
             $this->load->database();
-            $this->db->where('id_producto',$id);
-            $result=$this->db->get('tab_producto');
-            return $result->row()->existencias_producto;
+            $result=$this->db->query('call existencia ('.$cantidad.','.$id.')');
+            return $result->row()->campo;
+            //print_r($result);
         } 
 
         public function getPrecio($id)
@@ -42,13 +42,13 @@ class Venta_model extends CI_Model
             $this->load->database();
             $this->db->trans_begin();//Inicio de transacción//
             
-            $this->db->query("INSERT INTO tab_venta(id_cliente,fecha_venta, total_productos_venta,total_venta) VALUES(".$id_cliente.", '".$fecha_venta."', ".$total_productos_venta.", ".$total_venta.")");
+            $this->db->query("INSERT INTO tab_venta(id_cliente,fecha_venta, total_venta,total_productos_venta) VALUES(".$id_cliente.", '".$fecha_venta."', ".$total_venta.",".$total_productos_venta.")");
 
             $id_venta=$this->db->insert_id();//Funciona para recuperar el ultimo id autoincrement ingresado//
             for ($i=0; $i <$total_productos_venta; $i++) { 
                $this->db->query("INSERT INTO tab_venta_producto(id_venta, id_producto) VALUES(".$id_venta.", ".$id_producto.")");
             }
-             $this->db->query("UPDATE tab_producto SET existencias_producto=(existencias_producto-".$total_productos_venta.") WHERE id_producto=".$id_producto);
+             /*$this->db->query("UPDATE tab_producto SET existencias_producto=(existencias_producto-".$total_productos_venta.") WHERE id_producto=".$id_producto); se comento porque se hizo un trigger*/ 
 
              if($this->db->trans_status()===false)
              {

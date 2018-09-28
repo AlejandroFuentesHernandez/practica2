@@ -11,6 +11,7 @@ class Venta extends CI_Controller{
 
 	public function index()
 	{
+		$this->load->view('url');
 		$this->load->view('frmVenta');
 	}
 
@@ -32,17 +33,22 @@ class Venta extends CI_Controller{
 	
 	public function conseguirexistencia()
 	{
-		$id_producto=$this->input->get('idp');
 		$cantidad=$this->input->get('cant');
-		$result=$this->VM->getExistencias($id_producto);
-		if($result<$cantidad)
+		$id_producto=$this->input->get('idp');
+		echo $this->VM->getExistencias($cantidad,$id_producto);
+		/*foreach($resultado as $item) //la diferencia es la manera en la que se ingresar al array
+		{
+			$item->campo //result
+			$item['campo'] //result_array
+		}
+		/*if($result<$cantidad)
 		{
 		
 			echo 0; //Ajax reconoce todo lo que se le mande por echo
 		}else
 		{
 			echo 1; 
-		}
+		}*/
 	}
 
 	public function precio()

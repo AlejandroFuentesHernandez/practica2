@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Ventas</title>
-    <?php include 'url.php';?>
+   
 </head>
 
 <body style="background-color:#0B427C;">
@@ -81,11 +81,14 @@
 <script type="text/javascript">
 $(document).ready(function()
 {
+   $("#fecha_venta").datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+  });
   llenarCliente();
   llenarProducto();
  // modal();
   select();
-  calendario();
+ // calendario();
   $('#venta').modal("show"); //nos abre el modal sin necesidad de apretar un boton
 });
 
@@ -191,7 +194,7 @@ function existencias(){
     url:'<?php echo site_url();?>Venta/conseguirexistencia',
     data: 'idp='+idp+'&cant='+cant,
     success: function(data){
-      if(data==0){
+      if(data=='No'){
         $('#cantidad').val('');
         swal("Cantidad inexistente",'debe poner algo aqui','error');
         //  $('#cantidad').focus();
